@@ -1,6 +1,8 @@
 IMAGE = asd
 PACKAGE = asd
-CLOUD_ROOT = ssh://ufc@ufc.lerax.me:models/
+SSH = ufc@server.lerax.me
+CLOUD_PATH = www/models
+CLOUD_ROOT = $(SSH):$(CLOUD_PATH)
 PWD := $(shell pwd)
 UID := $(shell id -u)
 GID := $(shell id -g)
@@ -148,11 +150,11 @@ clean: clean-dist
 	find . -iname __pycache__ | xargs rm -rf
 
 
-# Save model workspace to AWS S3 (or another cloud) with version
+# Save model workspace to cloud with version
 save: guard-VERSION
 	@printf $(STATUS_PREFIX); echo "RELEASE /workspace TO CLOUD" $(VERSION)
-	rsync -rav -e ssh $(DOCKER_FOLDER)/  \
-					  $(CLOUD_ROOT)/$(IMAGE)/$(VERSION)/
+	ssh $(SSH) mkdir -p $(CLOUD_PATH)/$(IMAGE)/$(VERSION)
+	rsync -rav -e ssh workspace/* $(CLOUD_ROOT)/$(IMAGE)/$(VERSION)/
 
 
 
