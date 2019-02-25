@@ -86,6 +86,23 @@ jupyter:
 	docker exec -t -d jupyter chown -R $(USER) /home/jovyan/work/.
 	@printf $(ATTENTION_PREFIX); echo "JupyterLab: http://127.0.0.1:8888"
 
+jupyter-notebook:
+	@printf $(STATUS_PREFIX); echo "PREPARING JUPYTER NOTEBOOK ENVIRONMENT"
+	@docker kill jupyter 2> /dev/null || echo No jupyter running now
+	docker run -d --rm -p 8888:8888 \
+			   --name="jupyter" \
+			   --user root \
+		       -e NB_UID=$(UID) -e NB_GID=$(GID) \
+			   -v $(PWD):/home/jovyan/work \
+			   jupyter/datascience-notebook \
+			   start.sh jupyter notebook --NotebookApp.token=''
+	docker exec -t jupyter \
+		   pip --disable-pip-version-check  \
+			   --no-cache-dir \
+			   install -e /home/jovyan/work/.
+	docker exec -t -d jupyter chown -R $(USER) /home/jovyan/work/.
+	@printf $(ATTENTION_PREFIX); echo "JupyterNotebook: http://127.0.0.1:8888"
+
 
 # Enter in shell of the Docker container for debugging purposes
 shell: build
