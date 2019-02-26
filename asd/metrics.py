@@ -3,34 +3,48 @@ import numpy as np
 
 # Coeficiente de correlação Phi
 def corr_phi(x,y):
-    n00,n01,n10,n11 = (0,0,0,0)
+    # Dimensão da matriz
+    d = (2,2)
+    
+    # Matriz dos fatores
+    m = np.zeros(d)
+    
+    # Matriz da soma dos fatores
+    n = np.zeros(d)
+    
     # Construção da tabela
     for i,j in zip(x,y):
-        if i == j:
-            if i == 0:
-                n00+=1
-            elif j == 1:
-                n11+=1
-        elif i != j:
-            if i == 1 and j == 0:
-                n10+=1
-            elif i == 0 and j == 1:
-                n01+=1
-    n1o = n11 + n10
-    n0o = n01 + n00
-    no1 = n11 + n01
-    no0 = n10 + n00
+        if i == 0 and j == 0:
+            m[0][0] += 1
+        elif i == 1 and j == 1:
+            m[1][1] += 1
+        elif i == 1 and j == 0:
+            m[1][0] += 1
+        elif i == 0 and j == 1:
+            m[0][1] += 1
+        
+    #Soma dos fatores
+    n[1][0] = m[1][1] + m[1][0]
+    n[0][0] = m[0][1] + m[0][0]
+    n[1][1] = m[1][1] + m[0][1]
+    n[0][1] = m[1][0] + m[0][0]
+
     # Formulando a equação
-    term1 = n11*n00 - n10*n01
-    term2 = np.sqrt(n1o*n0o*no0*no1)
+    term1 = (m[1][1]*m[0][0]) - (m[1][0]*m[0][1])
+    term2 = np.sqrt(n[1][0]*n[0][0]*n[0][1]*n[1][1])
     return term1/term2
 
 # Coeficiente de correlação de Pearson
 def corr_pearson(x,y):
+    # Média das variáveis
     x_m = np.mean(np.array(x))
     y_m = np.mean(np.array(y))
+    
+    # Diferênça entre cada amostra e a média
     d1 = np.array(x) - x_m
     d2 = np.array(y) - y_m
+    
+    # Termos da expressão
     term1 = np.sum(d1*d2)
     term2 = np.sqrt(np.sum(d1**2)*np.sum(d2**2))
     return term1/term2
