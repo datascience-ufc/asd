@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/datascience-ufc/asd.svg?branch=master)](https://travis-ci.org/datascience-ufc/asd)
+
 # [`asd`]
 > Simple project description.
 
