@@ -1,6 +1,6 @@
 IMAGE = asd
 PACKAGE = asd
-SSH = ufc@server.lerax.me
+SSH = ufc@ufc.lerax.me
 CLOUD_PATH = www/models
 CLOUD_ROOT = $(SSH):$(CLOUD_PATH)
 PWD := $(shell pwd)
@@ -201,7 +201,7 @@ publish-latest:
 load: guard-VERSION mkdir-workspace
 	@printf $(STATUS_PREFIX); echo "LOAD /RESULTS FROM CLOUD OF" $(VERSION)
 	rsync -rav -e ssh $(CLOUD_ROOT)/$(IMAGE)/$(VERSION)/ \
-					   $(DOCKER_FOLDER)/ \
+					   workspace/ \
 
 
 mkdir-%:
