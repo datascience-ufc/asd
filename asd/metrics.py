@@ -1,5 +1,5 @@
 import numpy as np
-
+from sklearn.metrics import confusion_matrix
 
 # Coeficiente de correlação Phi
 def corr_phi(x, y):
@@ -50,3 +50,19 @@ def corr_pearson(x, y):
     term1 = np.sum(d1 * d2)
     term2 = np.sqrt(np.sum(d1 ** 2) * np.sum(d2 ** 2))
     return term1 / term2
+
+def confusion_metrics(y_test,result):
+    """Calcula as métricas de avaliação de uma matriz de confusão"""
+    # Extraindo valores da matriz confusão
+    tn,fp,fn,tp = confusion_matrix(y_test, result).ravel()
+    
+    # Métricas
+    accuracy = (tp+fp)/(tn+fp+fn+fp)
+    precision = tp/(tp+fp)
+    recall = tp/(tp+fn)
+    f1 = (2*(recall*precision))/(recall+precision)
+    
+    print('Accuracy: {} \n'.format(accuracy))
+    print('Precision: {} \n'.format(precision))
+    print('Recall: {} \n'.format(recall))
+    print('F1 Score: {} \n'.format(f1))
