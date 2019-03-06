@@ -51,18 +51,18 @@ def corr_pearson(x, y):
     term2 = np.sqrt(np.sum(d1 ** 2) * np.sum(d2 ** 2))
     return term1 / term2
 
-def confusion_metrics(y_test,result):
+
+def confusion_metrics(y_test, result):
     """Calcula as métricas de avaliação de uma matriz de confusão"""
-    # Extraindo valores da matriz confusão
-    tn,fp,fn,tp = confusion_matrix(y_test, result).ravel()
-    
+    # Extraindo valores da matriz confusão e criando dicionário
+    tn, fp, fn, tp = confusion_matrix(y_test, result).ravel()
+    metrics = {}
+
     # Métricas
-    accuracy = (tp+fp)/(tn+fp+fn+fp)
-    precision = tp/(tp+fp)
-    recall = tp/(tp+fn)
-    f1 = (2*(recall*precision))/(recall+precision)
-    
-    print('Accuracy: {} \n'.format(accuracy))
-    print('Precision: {} \n'.format(precision))
-    print('Recall: {} \n'.format(recall))
-    print('F1 Score: {} \n'.format(f1))
+    metrics["accuracy"] = (tp + fp) / (tn + fp + fn + fp)
+    metrics["precision"] = tp / (tp + fp)
+    metrics["recall"] = tp / (tp + fn)
+    metrics["f1"] = (2 * (metrics["recall"] * metrics["precision"])) / (
+        metrics["recall"] + metrics["precision"]
+    )
+    return metrics
