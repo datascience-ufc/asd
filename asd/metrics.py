@@ -1,9 +1,10 @@
 import numpy as np
 from sklearn.metrics import confusion_matrix
 
-# Coeficiente de correlação Phi
+
 def corr_phi(x, y):
     """Calcula a correção de phi entre x e y, sendo x e y arrays"""
+
     # Dimensão da matriz
     d = (2, 2)
 
@@ -38,6 +39,7 @@ def corr_phi(x, y):
 
 def corr_pearson(x, y):
     """Calcula correlação de x e y baseado no método de Pearson"""
+
     # Média das variáveis
     x_m = np.mean(np.array(x))
     y_m = np.mean(np.array(y))
@@ -54,6 +56,7 @@ def corr_pearson(x, y):
 
 def confusion_metrics(y_test, result):
     """Calcula as métricas de avaliação de uma matriz de confusão"""
+
     # Extraindo valores da matriz confusão e criando dicionário
     tn, fp, fn, tp = confusion_matrix(y_test, result).ravel()
     metrics = {}
