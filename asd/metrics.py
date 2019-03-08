@@ -54,7 +54,7 @@ def corr_pearson(x, y):
     return term1 / term2
 
 
-def confusion_metrics(y_test, result):
+def confusion_performance(y_test, result):
     """Calcula as métricas de avaliação de uma matriz de confusão"""
 
     # Extraindo valores da matriz confusão e criando dicionário
