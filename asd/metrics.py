@@ -59,10 +59,10 @@ def corr_pearson(x, y):
 def classification_report(y_test, y_pred):
     """Calcula as métricas de avaliação de uma matriz de confusão"""
 
-    # Serializando os valores da matriz de confusão
-    # A leitura é feita da esquerda para direita, de cima para baixo.
-    # A começar pela celula [0, 0]
-    # refs: https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html
+    # Serializando os valores da matriz de confusão A leitura é feita
+    # da esquerda para direita, de cima para baixo.  A começar pela
+    # celula [0, 0] refs:
+    # https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html
     tp, fn, fp, tn = confusion_matrix(y_test, y_pred).ravel()
     metrics = {}
 
