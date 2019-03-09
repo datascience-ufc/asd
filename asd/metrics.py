@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import numpy as np
 from sklearn.metrics import confusion_matrix
 
@@ -54,11 +56,14 @@ def corr_pearson(x, y):
     return term1 / term2
 
 
-def confusion_performance(y_test, result):
+def classification_report(y_test, y_pred):
     """Calcula as métricas de avaliação de uma matriz de confusão"""
 
-    # Extraindo valores da matriz confusão e criando dicionário
-    tn, fp, fn, tp = confusion_matrix(y_test, result).ravel()
+    # Serializando os valores da matriz de confusão
+    # A leitura é feita da esquerda para direita, de cima para baixo.
+    # A começar pela celula [0, 0]
+    # refs: https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html
+    tp, fn, fp, tn = confusion_matrix(y_test, y_pred).ravel()
     metrics = {}
 
     # Métricas
