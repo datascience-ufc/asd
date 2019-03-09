@@ -6,4 +6,4 @@
 
 # Matriz de Correlação
 
-![matrix](matrix_correlation.png)
+![matrix](correlation_matrix.png)
