@@ -5,7 +5,7 @@
   resposta e a pontuação nos teste comportamental.
 + [Distribuição Região vs Class/ASD](region-chart.html)
   Este gráfico demonstra a distribuição dos 5 países com maior índice de autistas na amostra analisada.
-+ [Distribuição Sexo vs Class/ASD](region-chart.html)
++ [Distribuição Sexo vs Class/ASD](gender-chart.html)
   Este gráfico demonstra a distribuição de sexo dos autistas.
   
 # Matriz de Correlação
