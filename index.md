@@ -10,7 +10,7 @@
 + [Distribuição das Crianças em Função da Pontuação no
   Teste](distrib_em_funcao_da_pontuacao.html)
 + [Relação de autismo sobre parantesco](heranca_genetica.html)
-+ [Relação de autismo por sexo](plot_diangostico_por_sexo.html)
++ [Relação de autismo por sexo](plot_diagnost_por_sexo.html)
 + [Relação países com maior incidência de
   autismo](plot_paises_maior_incidencia.html)
 + [Relação paises com mais participantes na
