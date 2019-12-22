@@ -25,9 +25,9 @@ def plot_confusion_matrix(y_test, result, cmap=plt.cm.Blues):
 
     # Rotate the tick labels and set their alignment.
     plt.setp(
-        ax.get_xticklabels(), 
-        rotation=45, 
-        ha="right", 
+        ax.get_xticklabels(),
+        rotation=45,
+        ha="right",
         rotation_mode="anchor"
     )
 
