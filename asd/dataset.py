@@ -15,6 +15,6 @@ def basicResourceEngineering(data):
     # variable recoded.
     attributes = ["A{}_Score".format(n) for n in range(1, 11)]
     data["Class/ASD"] = data["Class/ASD"].replace(
-        {"NO": "Sem_Autismo", "YES": "Autismo"}
+        {"NO": 0, "YES": 1}
     )
     return data[attributes], data["Class/ASD"]
